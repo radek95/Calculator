@@ -1,23 +1,22 @@
 package com.javafee.view;
 
-import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
 import javax.swing.JTextField;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JButton;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
+import javax.swing.border.EmptyBorder;
+import javax.swing.SwingConstants;
+import java.awt.Font;
 
 public class CalculatorFrame extends JFrame {
-
+	private static final long serialVersionUID = 1L;
+	
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField textFieldResult;
 	private JButton btnCE;
 	private JButton btnBackspace;
 	private JButton btn7;
@@ -40,19 +39,6 @@ public class CalculatorFrame extends JFrame {
 	private JButton btnDivisionSign;
 	private JButton btnSquare;
 
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CalculatorFrame frame = new CalculatorFrame();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
 	public CalculatorFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 536, 383);
@@ -66,15 +52,18 @@ public class CalculatorFrame extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 		
-		textField = new JTextField();
+		textFieldResult = new JTextField();
+		textFieldResult.setEditable(false);
+		textFieldResult.setFont(new Font("Tahoma", Font.PLAIN, 30));
+		textFieldResult.setHorizontalAlignment(SwingConstants.RIGHT);
 		GridBagConstraints gbc_textField = new GridBagConstraints();
 		gbc_textField.gridwidth = 5;
 		gbc_textField.insets = new Insets(0, 0, 5, 0);
 		gbc_textField.fill = GridBagConstraints.BOTH;
 		gbc_textField.gridx = 0;
 		gbc_textField.gridy = 0;
-		contentPane.add(textField, gbc_textField);
-		textField.setColumns(10);
+		contentPane.add(textFieldResult, gbc_textField);
+		textFieldResult.setColumns(10);
 		
 		JButton btnC = new JButton("C");
 		GridBagConstraints gbc_btnC = new GridBagConstraints();
@@ -86,10 +75,6 @@ public class CalculatorFrame extends JFrame {
 		contentPane.add(btnC, gbc_btnC);
 		
 		btnCE = new JButton("CE");
-		btnCE.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		GridBagConstraints gbc_btnCE = new GridBagConstraints();
 		gbc_btnCE.fill = GridBagConstraints.BOTH;
 		gbc_btnCE.gridwidth = 2;
@@ -98,11 +83,7 @@ public class CalculatorFrame extends JFrame {
 		gbc_btnCE.gridy = 1;
 		contentPane.add(btnCE, gbc_btnCE);
 		
-		btnBackspace = new JButton("<-");
-		btnBackspace.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		btnBackspace = new JButton("\u2190");
 		GridBagConstraints gbc_btnBackspace = new GridBagConstraints();
 		gbc_btnBackspace.fill = GridBagConstraints.BOTH;
 		gbc_btnBackspace.insets = new Insets(0, 0, 5, 0);
@@ -127,10 +108,6 @@ public class CalculatorFrame extends JFrame {
 		contentPane.add(btn8, gbc_btn8);
 		
 		btn9 = new JButton("9");
-		btn9.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		GridBagConstraints gbc_btn9 = new GridBagConstraints();
 		gbc_btn9.fill = GridBagConstraints.BOTH;
 		gbc_btn9.insets = new Insets(0, 0, 5, 5);
@@ -139,10 +116,12 @@ public class CalculatorFrame extends JFrame {
 		contentPane.add(btn9, gbc_btn9);
 		
 		btnSquare = new JButton("\u221A");
-		btnSquare.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		GridBagConstraints gbc_btnSquare = new GridBagConstraints();
+		gbc_btnSquare.fill = GridBagConstraints.BOTH;
+		gbc_btnSquare.insets = new Insets(0, 0, 5, 0);
+		gbc_btnSquare.gridx = 4;
+		gbc_btnSquare.gridy = 2;
+		contentPane.add(btnSquare, gbc_btnSquare);
 		
 		btnPercent = new JButton("%");
 		GridBagConstraints gbc_btnPercent = new GridBagConstraints();
@@ -151,18 +130,9 @@ public class CalculatorFrame extends JFrame {
 		gbc_btnPercent.gridx = 3;
 		gbc_btnPercent.gridy = 2;
 		contentPane.add(btnPercent, gbc_btnPercent);
-		GridBagConstraints gbc_btnSquare = new GridBagConstraints();
-		gbc_btnSquare.fill = GridBagConstraints.BOTH;
-		gbc_btnSquare.insets = new Insets(0, 0, 5, 0);
-		gbc_btnSquare.gridx = 4;
-		gbc_btnSquare.gridy = 2;
-		contentPane.add(btnSquare, gbc_btnSquare);
+
 		
 		btn4 = new JButton("4");
-		btn4.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		GridBagConstraints gbc_btn4 = new GridBagConstraints();
 		gbc_btn4.fill = GridBagConstraints.BOTH;
 		gbc_btn4.insets = new Insets(0, 0, 5, 5);
@@ -179,10 +149,6 @@ public class CalculatorFrame extends JFrame {
 		contentPane.add(btn5, gbc_btn5);
 		
 		btn6 = new JButton("6");
-		btn6.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		GridBagConstraints gbc_btn6 = new GridBagConstraints();
 		gbc_btn6.fill = GridBagConstraints.BOTH;
 		gbc_btn6.insets = new Insets(0, 0, 5, 5);
@@ -191,10 +157,6 @@ public class CalculatorFrame extends JFrame {
 		contentPane.add(btn6, gbc_btn6);
 		
 		btnMultiplicationSign = new JButton("X");
-		btnMultiplicationSign.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		GridBagConstraints gbc_btnMultiplicationSign = new GridBagConstraints();
 		gbc_btnMultiplicationSign.fill = GridBagConstraints.BOTH;
 		gbc_btnMultiplicationSign.insets = new Insets(0, 0, 5, 5);
@@ -219,10 +181,6 @@ public class CalculatorFrame extends JFrame {
 		contentPane.add(btn1, gbc_btn1);
 		
 		btn2 = new JButton("2");
-		btn2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		GridBagConstraints gbc_btn2 = new GridBagConstraints();
 		gbc_btn2.fill = GridBagConstraints.BOTH;
 		gbc_btn2.insets = new Insets(0, 0, 5, 5);
@@ -231,10 +189,6 @@ public class CalculatorFrame extends JFrame {
 		contentPane.add(btn2, gbc_btn2);
 		
 		btn3 = new JButton("3");
-		btn3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		GridBagConstraints gbc_btn3 = new GridBagConstraints();
 		gbc_btn3.fill = GridBagConstraints.BOTH;
 		gbc_btn3.insets = new Insets(0, 0, 5, 5);
@@ -251,10 +205,6 @@ public class CalculatorFrame extends JFrame {
 		contentPane.add(btnMinusSign, gbc_btnMinusSign);
 		
 		btn0 = new JButton("0");
-		btn0.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		GridBagConstraints gbc_btn0 = new GridBagConstraints();
 		gbc_btn0.fill = GridBagConstraints.BOTH;
 		gbc_btn0.insets = new Insets(0, 0, 0, 5);
@@ -263,10 +213,6 @@ public class CalculatorFrame extends JFrame {
 		contentPane.add(btn0, gbc_btn0);
 		
 		btnDot = new JButton(".");
-		btnDot.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		GridBagConstraints gbc_btnDot = new GridBagConstraints();
 		gbc_btnDot.fill = GridBagConstraints.BOTH;
 		gbc_btnDot.insets = new Insets(0, 0, 0, 5);
@@ -299,4 +245,93 @@ public class CalculatorFrame extends JFrame {
 		contentPane.add(btnEqualSign, gbc_btnEqualSign);
 	}
 
+	public JTextField getTextFieldResult() {
+		return textFieldResult;
+	}
+	
+	public JButton getBtnCE() {
+		return btnCE;
+	}
+
+	public JButton getBtnBackspace() {
+		return btnBackspace;
+	}
+
+	public JButton getBtn7() {
+		return btn7;
+	}
+
+	public JButton getBtn8() {
+		return btn8;
+	}
+
+	public JButton getBtn9() {
+		return btn9;
+	}
+
+	public JButton getBtn1() {
+		return btn1;
+	}
+
+	public JButton getBtn4() {
+		return btn4;
+	}
+
+	public JButton getBtn0() {
+		return btn0;
+	}
+
+	public JButton getBtn5() {
+		return btn5;
+	}
+
+	public JButton getBtn2() {
+		return btn2;
+	}
+
+	public JButton getBtnDot() {
+		return btnDot;
+	}
+
+	public JButton getBtn6() {
+		return btn6;
+	}
+
+	public JButton getBtn3() {
+		return btn3;
+	}
+
+	public JButton getBtnPlusMinus() {
+		return btnPlusMinus;
+	}
+
+	public JButton getBtnPlusSign() {
+		return btnPlusSign;
+	}
+
+	public JButton getBtnPercent() {
+		return btnPercent;
+	}
+
+	public JButton getBtnMultiplicationSign() {
+		return btnMultiplicationSign;
+	}
+
+	public JButton getBtnMinusSign() {
+		return btnMinusSign;
+	}
+
+	public JButton getBtnEqualSign() {
+		return btnEqualSign;
+	}
+
+	public JButton getBtnDivisionSign() {
+		return btnDivisionSign;
+	}
+
+	public JButton getBtnSquare() {
+		return btnSquare;
+	}
+
+	
 }
